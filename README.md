@@ -1,5 +1,5 @@
 # WinGL ![Stars](https://img.shields.io/github/stars/realTristan/WinGL?color=brightgreen) ![Watchers](https://img.shields.io/github/watchers/realTristan/WinGL?label=Watchers)
-![image](https://github.com/realTristan/WinGL/assets/75189508/6f6071c1-b2da-45d5-b321-fb7206c04218)
+![image](https://github.com/realTristan/WinGL/assets/75189508/c233f1ae-8353-4db2-b35f-b6b22fa3ebd2)
 
 # Todo
 - [X] Open a window
