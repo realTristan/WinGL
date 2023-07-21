@@ -2,6 +2,8 @@
     "files.associations": {
         "window.h": "c",
         "windows.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "frame.h": "c",
+        "stdint.h": "c"
     }
 }

@@ -1,5 +1,5 @@
-#ifndef FRAME_H
-#define FRAME_H
+#ifndef WINDOW_FRAME_H
+#define WINDOW_FRAME_H
 
 #include <stdint.h>
 #include <windows.h>
@@ -15,6 +15,4 @@ typedef struct Frame
     HDC device_context;
 } Frame;
 
-static Frame *frame = {0};
-
-#endif // FRAME_H
+#endif // WINDOW_FRAME_H
