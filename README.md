@@ -3,8 +3,8 @@
 
 # Todo
 - [X] Open a window
-- [ ] Messages, Message Contexts, Message Handling Functions
-- [ ] Drawing
+- [X] Messages, Message Contexts, Message Handling Functions
+- [X] Drawing
 - [ ] Text
 - [ ] Images
 - [ ] Key Input
