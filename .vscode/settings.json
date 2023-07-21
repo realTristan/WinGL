@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "window.h": "c"
+        "window.h": "c",
+        "windows.h": "c",
+        "stdbool.h": "c"
     }
 }
