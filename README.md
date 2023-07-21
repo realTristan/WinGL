@@ -5,6 +5,10 @@
 - [X] Open a window
 - [X] Messages, Message Contexts, Message Handling Functions
 - [X] Drawing
+- [X] Lines
+- [ ] Rectangles
+- [ ] Ellipses
+- [ ] Polygons
 - [ ] Text
 - [ ] Images
 - [ ] Key Input
