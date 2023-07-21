@@ -7,6 +7,7 @@
 LRESULT CALLBACK WindowProcessMessage(HWND window_handle, UINT message, WPARAM wParam, LPARAM lParam);
 
 bool event_quit(MSG message);
+void close_window();
 
 void show_window(const wchar_t *class_name, char *title, HINSTANCE hInstance);
 void register_window(const wchar_t *class_name, HINSTANCE hInstance);

@@ -11,6 +11,7 @@ void message_callback(MSG message)
 {
     if (event_quit(message))
     {
+        close_window();
         exit(0);
     }
 }

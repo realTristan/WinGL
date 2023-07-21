@@ -4,6 +4,16 @@
 #include <windows.h>
 #include <stdbool.h>
 
+bool event_quit(MSG message)
+{
+    return message.message == WM_QUIT;
+}
+
+void close_window()
+{
+    PostQuitMessage(0);
+}
+
 LRESULT CALLBACK WindowProcessMessage(HWND window_handle, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
@@ -11,7 +21,7 @@ LRESULT CALLBACK WindowProcessMessage(HWND window_handle, UINT message, WPARAM w
     case WM_QUIT:
     case WM_DESTROY:
     {
-        PostQuitMessage(0);
+        close_window();
         return 0;
     }
     break;
@@ -23,11 +33,6 @@ LRESULT CALLBACK WindowProcessMessage(HWND window_handle, UINT message, WPARAM w
     break;
     }
     return 0;
-}
-
-bool event_quit(MSG message)
-{
-    return message.message == WM_QUIT;
 }
 
 void show_window(const wchar_t *class_name, char *title, HINSTANCE hInstance)
@@ -62,7 +67,7 @@ void register_window(const wchar_t *class_name, HINSTANCE hInstance)
     RegisterClass(window_class);
 }
 
-void get_message(MSG *message)
+void update_message(MSG *message)
 {
     while (PeekMessage(message, NULL, 0, 0, PM_REMOVE))
     {
@@ -76,7 +81,7 @@ void open_message_context(void (*function)(MSG))
     MSG message;
     while (true)
     {
-        get_message(&message);
+        update_message(&message);
         function(message);
     }
 }
