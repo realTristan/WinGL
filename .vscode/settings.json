@@ -4,6 +4,8 @@
         "windows.h": "c",
         "stdbool.h": "c",
         "frame.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "vec2d.h": "c",
+        "events.h": "c"
     }
 }

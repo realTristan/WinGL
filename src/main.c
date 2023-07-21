@@ -1,45 +1,36 @@
+#ifndef MAIN
+#define MAIN
+
 #include <windows.h>
+#include <stdio.h>
 #include "window/window.h"
 #include "window/events.h"
 #include "window/frame.h"
-#include <stdio.h>
+#include "common/vec2d.h"
 
 // The frame
 static Frame *frame;
 
 /**
- * @brief Generate a random 32 bit integer
- *
- * @return int The random integer
- */
-#if RAND_MAX == 32767
-#define Rand32() ((rand() << 16) | rand())
-#else
-#define Rand32() rand()
-#endif
-
-/**
  * @brief Draws random pixels on the screen
  *
  * @param frame The frame
- * @param window_handle The window handle
  * @return void
  */
-void draw_rand_pixels(Frame *frame, HWND window_handle)
+void draw_line(Frame *frame)
 {
-    /*static unsigned int p = 0;
-    frame->pixels[(p++) % (frame->width * frame->height)] = Rand32();
-    frame->pixels[Rand32() % (frame->width * frame->height)] = 100;*/
-    
-    // Set the frame pixels to black
-    for (int i = 0; i < frame->width * frame->height; i++)
+    // Draw a white line with a length of 100 pixels and thickness of 5 pixels
+    for (int i = 0; i < 100; i++)
     {
-        frame->pixels[i] = 0;
+        for (int j = 0; j < 5; j++)
+        {
+            uint32_t *pixel = frame_at(frame, (Vec2D){100 + i, 100 + j});
+            *pixel = 0x00FFFFFF;
+        }
     }
 
     // Update the window
-    InvalidateRect(window_handle, NULL, FALSE);
-    UpdateWindow(window_handle);
+    update_frame(frame);
 }
 
 /**
@@ -50,18 +41,16 @@ void draw_rand_pixels(Frame *frame, HWND window_handle)
  */
 void message_callback(MSG message)
 {
+    // Clear the screen to black
+    clear_wnd(frame, 0x00000000);
+
     // Draw on the screen
-    draw_rand_pixels(frame, message.hwnd);
+    draw_line(frame);
 
-    // Handle the message events
-    if (event_paint(message))
-    {
-        paint_frame(message.hwnd, frame);
-    }
-
+    // If the window is resized
     if (event_resize(message))
     {
-        resize_frame(message.hwnd, frame);
+        size_frame(message.hwnd, frame);
     }
 }
 
@@ -76,22 +65,28 @@ void message_callback(MSG message)
  */
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nCmdShow)
 {
-    // Initialize the frame
-    frame = init_frame(800, 600);
-    printf("Frame initialized\n");
-
     // Create and register a new window class
-    WNDCLASS *wnd_class = init_wnd_class(L"window_class", hInstance);
+    WNDCLASS *wnd_class = init_wnd_class(L"wnd_class", hInstance);
     printf("Window class initialized\n");
 
-    // Show the window
-    HWND wnd_handle = init_wnd_handle(L"window_class", "Window", hInstance);
+    // Show the wnd
+    HWND wnd_handle = init_wnd_handle(L"wnd_class", "Window", hInstance, nCmdShow);
     printf("Window handle initialized\n");
 
+    // Initialize the frame
+    frame = init_frame(wnd_handle);
+    printf("Frame initialized\n");
+
     // Loop for handling messages
-    while (true)
-        open_message_context(message_callback);
+    open_message_context(message_callback);
 
     // Exit the program
     return 0;
 }
+
+/*
+gcc -I"src" src/window/window.c src/window/events.c src/main.c -o build/main.exe -L"MinGW/lib" -lgdi32
+./build/main.exe
+*/
+
+#endif // MAIN
