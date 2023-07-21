@@ -2,6 +2,14 @@
 
 ![image](https://github.com/realTristan/WinGL/assets/75189508/fafb0eec-6ddb-4142-ba72-78d243a7d7cf)
 
+# Todo
+- [X] Open a window
+- [ ] Messages, Message Contexts, Message Handling Functions
+- [ ] Drawing
+- [ ] Text
+- [ ] Images
+- [ ] Key Input
+
 # License
 MIT License
 
