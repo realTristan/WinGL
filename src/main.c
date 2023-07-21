@@ -7,6 +7,7 @@
 #include "window/events.h"
 #include "window/frame.h"
 #include "common/vec2d.h"
+// #include "graphics/line.h"
 
 // The frame
 static Frame *frame;
@@ -20,17 +21,14 @@ static Frame *frame;
 void draw_line(Frame *frame)
 {
     // Draw a white line with a length of 100 pixels and thickness of 5 pixels
-    for (int i = 0; i < 100; i++)
+    for (int w = 0; w < 5; w++) // Width
     {
-        for (int j = 0; j < 5; j++)
+        for (int i = 0; i < 100; i++) // Length
         {
-            uint32_t *pixel = frame_at(frame, (Vec2D){100 + i, 100 + j});
+            uint32_t *pixel = frame_at(frame, (Vec2D){100 + i, 100 + w});
             *pixel = 0x00FFFFFF;
         }
     }
-
-    // Update the window
-    update_frame(frame);
 }
 
 /**
@@ -46,12 +44,16 @@ void message_callback(MSG message)
 
     // Draw on the screen
     draw_line(frame);
+    // draw_line(frame, (Vec2D){100, 100}, (Vec2D){200, 200}, 0x00FFFFFF, 5); // graphics/line.h
 
     // If the window is resized
     if (event_resize(message))
     {
-        size_frame(message.hwnd, frame);
+        size_frame(message.hwnd, frame); // need to call update_frame afterwards
     }
+
+    // Update the frame
+    update_frame(frame);
 }
 
 /**
@@ -70,7 +72,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
     printf("Window class initialized\n");
 
     // Show the wnd
-    HWND wnd_handle = init_wnd_handle(L"wnd_class", "Window", hInstance, nCmdShow);
+    HWND wnd_handle = init_wnd_handle(L"wnd_class", "WinGL - Win32 Graphics Library", hInstance, nCmdShow);
     printf("Window handle initialized\n");
 
     // Initialize the frame
@@ -85,6 +87,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 }
 
 /*
+gcc -I"src" src/window/window.c src/graphics/line.c src/window/events.c src/main.c -o build/main.exe -L"MinGW/lib" -lgdi32
+./build/main.exe
+
 gcc -I"src" src/window/window.c src/window/events.c src/main.c -o build/main.exe -L"MinGW/lib" -lgdi32
 ./build/main.exe
 */
