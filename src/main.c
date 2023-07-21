@@ -7,29 +7,10 @@
 #include "window/events.h"
 #include "window/frame.h"
 #include "common/vec2d.h"
-// #include "graphics/line.h"
+#include "graphics/line.h"
 
 // The frame
 static Frame *frame;
-
-/**
- * @brief Draws random pixels on the screen
- *
- * @param frame The frame
- * @return void
- */
-void draw_line(Frame *frame)
-{
-    // Draw a white line with a length of 100 pixels and thickness of 5 pixels
-    for (int w = 0; w < 5; w++) // Width
-    {
-        for (int i = 0; i < 100; i++) // Length
-        {
-            uint32_t *pixel = frame_at(frame, (Vec2D){100 + i, 100 + w});
-            *pixel = 0x00FFFFFF;
-        }
-    }
-}
 
 /**
  * @brief Callback function for the message context
@@ -43,8 +24,9 @@ void message_callback(MSG message)
     clear_wnd(frame, 0x00000000);
 
     // Draw on the screen
-    draw_line(frame);
-    // draw_line(frame, (Vec2D){100, 100}, (Vec2D){200, 200}, 0x00FFFFFF, 5); // graphics/line.h
+    draw_line(frame, (Vec2D){100, 100}, (Vec2D){200, 200}, 0x00FFFFFF, 5); // graphics/line.h
+    draw_line(frame, (Vec2D){600, 100}, (Vec2D){600, 300}, 0x00FFFFFF, 5); // graphics/line.h
+    draw_line(frame, (Vec2D){300, 100}, (Vec2D){500, 100}, 0x00FFFFFF, 5); // graphics/line.h
 
     // If the window is resized
     if (event_resize(message))
@@ -88,9 +70,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 
 /*
 gcc -I"src" src/window/window.c src/graphics/line.c src/window/events.c src/main.c -o build/main.exe -L"MinGW/lib" -lgdi32
-./build/main.exe
-
-gcc -I"src" src/window/window.c src/window/events.c src/main.c -o build/main.exe -L"MinGW/lib" -lgdi32
 ./build/main.exe
 */
 
