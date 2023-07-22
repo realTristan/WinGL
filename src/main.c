@@ -7,8 +7,8 @@
 #include "window/events.h"
 #include "window/frame.h"
 #include "common/vec2d.h"
-#include "graphics/positioned_line.h"
-#include "graphics/angled_line.h"
+#include "graphics/line/positioned.h"
+#include "graphics/line/angled.h"
 
 // The frame
 static Frame *frame;

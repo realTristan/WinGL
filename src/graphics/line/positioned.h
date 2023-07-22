@@ -1,8 +1,8 @@
 #ifndef GRAPHICS_POSITIONED_LINE_H
 #define GRAPHICS_POSITIONED_LINE_H
 
-#include "../common/vec2d.h"
-#include "../window/frame.h"
+#include "../../common/vec2d.h"
+#include "../../window/frame.h"
 
 /**
  * @brief Draws a line on the screen

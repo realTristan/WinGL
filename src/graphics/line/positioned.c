@@ -1,8 +1,8 @@
 #ifndef GRAPHICS_POSITIONED_LINE_C
 #define GRAPHICS_POSITIONED_LINE_C
 
-#include "../common/vec2d.h"
-#include "../window/window.h"
+#include "../../common/vec2d.h"
+#include "../../window/window.h"
 #include <stdint.h>
 #include <math.h>
 #include <stdio.h>

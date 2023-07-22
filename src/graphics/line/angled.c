@@ -1,9 +1,9 @@
 #ifndef GRAPHICS_ANGLED_LINE_C
 #define GRAPHICS_ANGLED_LINE_C
 
-#include "../common/vec2d.h"
-#include "../window/frame.h"
-#include "positioned_line.h"
+#include "../../common/vec2d.h"
+#include "../../window/frame.h"
+#include "positioned.h"
 #include <stdint.h>
 #include <math.h>
 
