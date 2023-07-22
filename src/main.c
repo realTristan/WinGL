@@ -9,6 +9,7 @@
 #include "common/vec2d.h"
 #include "graphics/line/positioned.h"
 #include "graphics/line/angled.h"
+#include "graphics/circle/circle.h"
 
 // The frame
 static Frame *frame;
@@ -33,6 +34,9 @@ void message_callback(MSG message)
     draw_angled_line(frame, (Vec2D){400, 400}, 45, 100, 0x00FFFFFF, 5); // graphics/line.h
     draw_angled_line(frame, (Vec2D){200, 600}, 0, 100, 0x00FFFFFF, 5); // graphics/line.h
     draw_angled_line(frame, (Vec2D){800, 500}, 135, 100, 0x00FFFFFF, 5); // graphics/line.h
+
+    // Draw a circle on the screen
+    draw_circle(frame, (Vec2D){400, 400}, 100, 5, 100); // graphics/circle.h
 
     // If the window is resized
     if (event_resize(message))
@@ -75,7 +79,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 }
 
 /*
-gcc -I"src" src/window/window.c src/graphics/angled_line.c src/graphics/positioned_line.c src/window/events.c src/main.c -o build/main.exe -L"MinGW/lib" -lgdi32
+gcc -I"src" src/window/window.c src/graphics/circle/circle.c src/graphics/line/angled.c src/graphics/line/positioned.c src/window/events.c src/main.c -o build/main.exe -L"MinGW/lib" -lgdi32
 ./build/main.exe
 */
 

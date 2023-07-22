@@ -9,6 +9,7 @@
         "events.h": "c",
         "positioned_line.h": "c",
         "math.h": "c",
-        "angled.h": "c"
+        "angled.h": "c",
+        "stdio.h": "c"
     }
 }

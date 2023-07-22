@@ -1,5 +1,5 @@
-#ifndef GRAPHICS_ANGLED_LINE_C
-#define GRAPHICS_ANGLED_LINE_C
+#ifndef GRAPHICS_LINE_ANGLED_C
+#define GRAPHICS_LINE_ANGLED_C
 
 #include "../../common/vec2d.h"
 #include "../../window/frame.h"
@@ -32,4 +32,4 @@ void draw_angled_line(Frame *frame, Vec2D start, float angle, float length, uint
     draw_positioned_line(frame, start, end, color, width);
 }
 
-#endif // GRAPHICS_ANGLED_LINE_C
+#endif // GRAPHICS_LINE_ANGLED_C

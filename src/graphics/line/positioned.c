@@ -1,5 +1,5 @@
-#ifndef GRAPHICS_POSITIONED_LINE_C
-#define GRAPHICS_POSITIONED_LINE_C
+#ifndef GRAPHICS_LINE_POSITIONED_C
+#define GRAPHICS_LINE_POSITIONED_C
 
 #include "../../common/vec2d.h"
 #include "../../window/window.h"
@@ -118,4 +118,4 @@ void draw_positioned_line(Frame *frame, Vec2D start, Vec2D end, uint32_t color, 
         draw_positioned_line_diagonal(frame, start, end, color, width);
 }
 
-#endif // GRAPHICS_POSITIONED_LINE_C
+#endif // GRAPHICS_LINE_POSITIONED_C
