@@ -4,14 +4,15 @@
 # Todo
 - [X] Open a window
 - [X] Messages, Message Contexts, Message Handling Functions
-- [X] Drawing
-- [X] Lines
+- [X] Drawing, Background
+- [X] Lines, Angled, Positioned
 - [ ] Rectangles
 - [ ] Ellipses
 - [ ] Polygons
 - [ ] Text
 - [ ] Images
 - [ ] Key Input
+- [ ] Make C++ Implementations
 
 # License
 MIT License
