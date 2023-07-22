@@ -1,9 +1,8 @@
-#ifndef GRAPHICS_LINE_H
-#define GRAPHICS_LINE_H
+#ifndef GRAPHICS_POSITIONED_LINE_H
+#define GRAPHICS_POSITIONED_LINE_H
 
 #include "../common/vec2d.h"
-#include "../window/window.h"
-#include <stdint.h>
+#include "../window/frame.h"
 
 /**
  * @brief Draws a line on the screen
@@ -15,6 +14,6 @@
  * @param width The width of the line
  * @return void
  */
-void draw_line(Frame *frame, Vec2D start, Vec2D end, uint32_t color, int width);
+void draw_positioned_line(Frame *frame, Vec2D start, Vec2D end, uint32_t color, int width);
 
-#endif // GRAPHICS_LINE_H
+#endif // GRAPHICS_POSITIONED_LINE_H

@@ -1,11 +1,11 @@
-#ifndef GRAPHICS_LINE_C
-#define GRAPHICS_LINE_C
+#ifndef GRAPHICS_POSITIONED_LINE_C
+#define GRAPHICS_POSITIONED_LINE_C
 
 #include "../common/vec2d.h"
 #include "../window/window.h"
 #include <stdint.h>
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 
 /**
  * @brief Draws a line on the screen horizontal
@@ -17,7 +17,7 @@
  * @param width The width of the line
  * @return void
  */
-void draw_line_horizontal(Frame *frame, Vec2D start, Vec2D end, uint32_t color, int width)
+void draw_positioned_line_horizontal(Frame *frame, Vec2D start, Vec2D end, uint32_t color, int width)
 {
     // Calculate the y length (absolute value)
     int x_length = abs(end.x - start.x);
@@ -43,7 +43,7 @@ void draw_line_horizontal(Frame *frame, Vec2D start, Vec2D end, uint32_t color, 
  * @param width The width of the line
  * @return void
  */
-void draw_line_vertical(Frame *frame, Vec2D start, Vec2D end, uint32_t color, int width)
+void draw_positioned_line_vertical(Frame *frame, Vec2D start, Vec2D end, uint32_t color, int width)
 {
     // Calculate the x length (absolute value)
     int y_length = abs(end.y - start.y);
@@ -69,10 +69,10 @@ void draw_line_vertical(Frame *frame, Vec2D start, Vec2D end, uint32_t color, in
  * @param width The width of the line
  * @return void
  */
-void draw_line_diagonal(Frame *frame, Vec2D start, Vec2D end, uint32_t color, int width)
+void draw_positioned_line_diagonal(Frame *frame, Vec2D start, Vec2D end, uint32_t color, int width)
 {
-    // Calculate the slope
-    int slope = (end.y - start.y) / (end.x - start.x);
+    // Calculate the slope rounded up
+    float slope = (float)(end.y - start.y) / (float)(end.x - start.x);
 
     // Calculate the x length (absolute value)
     int x_length = abs(end.x - start.x);
@@ -80,7 +80,7 @@ void draw_line_diagonal(Frame *frame, Vec2D start, Vec2D end, uint32_t color, in
     for (int w = 0; w < width; w++)
     {
         // Keep track of the y position
-        int y_pos = start.y + w * slope;
+        float y_pos = start.y + w * slope;
 
         // Draw the pixels
         for (int i = 0; i < x_length; i++)
@@ -108,14 +108,14 @@ void draw_line_diagonal(Frame *frame, Vec2D start, Vec2D end, uint32_t color, in
  * @param width The width of the line
  * @return void
  */
-void draw_line(Frame *frame, Vec2D start, Vec2D end, uint32_t color, int width)
+void draw_positioned_line(Frame *frame, Vec2D start, Vec2D end, uint32_t color, int width)
 {
     if (start.x == end.x)
-        draw_line_vertical(frame, start, end, color, width);
+        draw_positioned_line_vertical(frame, start, end, color, width);
     else if (start.y == end.y)
-        draw_line_horizontal(frame, start, end, color, width);
+        draw_positioned_line_horizontal(frame, start, end, color, width);
     else
-        draw_line_diagonal(frame, start, end, color, width);
+        draw_positioned_line_diagonal(frame, start, end, color, width);
 }
 
-#endif // GRAPHICS_LINE_C
+#endif // GRAPHICS_POSITIONED_LINE_C

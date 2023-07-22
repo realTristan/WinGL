@@ -7,7 +7,8 @@
 #include "window/events.h"
 #include "window/frame.h"
 #include "common/vec2d.h"
-#include "graphics/line.h"
+#include "graphics/positioned_line.h"
+#include "graphics/angled_line.h"
 
 // The frame
 static Frame *frame;
@@ -23,10 +24,15 @@ void message_callback(MSG message)
     // Clear the screen to black
     clear_wnd(frame, 0x00000000);
 
-    // Draw on the screen
-    draw_line(frame, (Vec2D){100, 100}, (Vec2D){200, 200}, 0x00FFFFFF, 5); // graphics/line.h
-    draw_line(frame, (Vec2D){600, 100}, (Vec2D){600, 300}, 0x00FFFFFF, 5); // graphics/line.h
-    draw_line(frame, (Vec2D){300, 100}, (Vec2D){500, 100}, 0x00FFFFFF, 5); // graphics/line.h
+    // Draw positioned lines on the screen
+    draw_positioned_line(frame, (Vec2D){100, 300}, (Vec2D){200, 480}, 0x00FFFFFF, 5); // graphics/line.h
+    draw_positioned_line(frame, (Vec2D){600, 100}, (Vec2D){600, 300}, 0x00FFFFFF, 5); // graphics/line.h
+    draw_positioned_line(frame, (Vec2D){300, 100}, (Vec2D){500, 100}, 0x00FFFFFF, 5); // graphics/line.h
+
+    // Draw angled lines on the screen
+    draw_angled_line(frame, (Vec2D){400, 400}, 45, 100, 0x00FFFFFF, 5); // graphics/line.h
+    draw_angled_line(frame, (Vec2D){200, 600}, 0, 100, 0x00FFFFFF, 5); // graphics/line.h
+    draw_angled_line(frame, (Vec2D){800, 500}, 135, 100, 0x00FFFFFF, 5); // graphics/line.h
 
     // If the window is resized
     if (event_resize(message))
@@ -69,7 +75,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 }
 
 /*
-gcc -I"src" src/window/window.c src/graphics/line.c src/window/events.c src/main.c -o build/main.exe -L"MinGW/lib" -lgdi32
+gcc -I"src" src/window/window.c src/graphics/angled_line.c src/graphics/positioned_line.c src/window/events.c src/main.c -o build/main.exe -L"MinGW/lib" -lgdi32
 ./build/main.exe
 */
 

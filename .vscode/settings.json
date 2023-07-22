@@ -6,6 +6,8 @@
         "frame.h": "c",
         "stdint.h": "c",
         "vec2d.h": "c",
-        "events.h": "c"
+        "events.h": "c",
+        "positioned_line.h": "c",
+        "math.h": "c"
     }
 }
