@@ -18,7 +18,7 @@
 void draw_pixel(Frame *frame, Vec2D pos, uint32_t color)
 {
     // Get the pixel position
-    uint32_t *pixel = frame_at(frame, pos.x, pos.y);
+    uint32_t *pixel = frame_at(frame, pos);
     *pixel = color;
 }
 
