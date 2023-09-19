@@ -1,7 +1,7 @@
-all: build execute
+all: output execute
 
-build:
-	gcc -I"src" src/window/window.c src/graphics/line.c src/window/events.c src/main.c -o build/main.exe -L"MinGW/lib" -lgdi32
+output:
+	gcc -I"src" src/window/window.c src/graphics/line.c src/window/events.c src/main.c -o build/main -L"MinGW/lib" -lgdi32
 
 execute:
-	./build/main.exe
+	./build/main
